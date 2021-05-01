@@ -10,3 +10,9 @@ def descending_order(num):
         stringDescOrder+=str(item)
     return int(stringDescOrder)
 
+/*outra forma de resolver o mesmo problema*/
+def Descending_Order(num):
+    if isinstance(num, int) and num >= 0:
+        return int(''.join(sorted(str(num),reverse=True)))
+    else:
+        raise ValueError('Non-negative integer expected')
