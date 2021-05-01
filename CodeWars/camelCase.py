@@ -3,7 +3,7 @@ import re
 def to_camel_case(text):
     #your code here
     camelCase=""
-    text=text.strip()
+    text=text.lower().strip()
     texts=re.split(' |_|-|!|\+|\*|\"',text)
     for index,txt in enumerate(texts):
         if(index!=0): 
