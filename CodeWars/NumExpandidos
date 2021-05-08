@@ -1,0 +1,13 @@
+def expanded_form(num):
+    size=len(str(num))-1
+    string=""
+    for index,item in enumerate(str(num)):
+        if index!=0 and item!="0":
+            string+=" + "
+        print(item)
+        if item!="0":
+            string+=str(int(item)*pow(10,size))
+            size-=1
+        if item=="0":
+            size-=1
+    return string
