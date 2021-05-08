@@ -1,0 +1,35 @@
+def solution(roman):
+    """complete the solution by transforming the roman numeral into an integer"""
+    value=0
+    for index,item in enumerate(roman):
+        if item=="I":
+            if index+1<len(roman) and (roman[index+1]=="V" or roman[index+1]=="X"):
+                value-=1
+            else:
+                value+=1
+            
+        elif item=="V":
+            value+=5
+        elif item=="X":
+            if index+1<len(roman) and (roman[index+1]=="L" or roman[index+1]=="C"):
+                value-=10
+            else:
+                value+=10
+        elif item=="L":
+            if index+1<len(roman) and (roman[index+1]=="C" or roman[index+1]=="D"):
+                value-=50
+            else:
+                value+=50
+        elif item=="C":
+            if index+1<len(roman) and (roman[index+1]=="D" or roman[index+1]=="M"):
+                value-=100
+            else:
+                value+=100          
+        elif item=="D":
+            if index+1<len(roman) and (roman[index+1]=="M"):
+                value-=500
+            else:
+                value+=500 
+        elif item=="M":
+            value+=1000
+    return value
