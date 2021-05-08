@@ -3,11 +3,9 @@ def generate_hashtag(text):
     hashTagText=""
     text=text.lower().strip()
     texts=re.split(' |_|-|!|\+|\*|\"',text)
-    if len(text)>141:
+    if len(text)>141 or len(text)==0:
         return False
-    elif text!="":
+    else:
         for index,txt in enumerate(texts):
             hashTagText+=txt.capitalize()
         return "#"+hashTagText
-    else:
-        return False
