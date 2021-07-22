@@ -1,0 +1,27 @@
+from menu import Menu, MenuItem
+from coffee_maker import CoffeeMaker
+from money_machine import MoneyMachine
+
+user_input=""
+menu=Menu()
+coffeeMaker=CoffeeMaker()
+while user_input!="off":
+    user_input=input(f"What would you like ?({menu.get_items()})")
+    user_input=user_input.lower()
+    if user_input=="off":
+        break
+    if user_input=="report":
+        print(coffeeMaker.report)
+    if user_input in menu.get_items():
+        ordered_item=menu.find_drink(user_input)
+        if coffeeMaker.is_resource_sufficient(ordered_item)==True:
+            coins=float(input(f"The {user_input} will be done soon,\n Please insert the coins!"))
+            if coins<ordered_item.cost:
+                print("Not Enough Coins, your money will be refounded")
+            else:
+                coffeeMaker.make_coffee(ordered_item)
+                print(f"The {ordered_item.name} is been done")
+                if coins-ordered_item.cost>0:
+                    print(f"Here is your change : {coins-ordered_item.cost}")
+        else:
+            print(f"We dont have sufficient ingredients today")
